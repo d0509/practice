@@ -18,7 +18,13 @@ Route::get('/', function () {
 });
 
 
-Route::get('/demo/{name}/{id?}',function($name,$id=null){
-    $data = compact('name','id');
-    return view('demo')->with($data);
+Route::any('/demo/{name?}',function($name = null){
+   $data = compact('name');
+   return view('welcome')->with($data);
+})->middleware('guard');
+
+
+Route::get('no-access',function(){
+    echo 'You are not allowed to access the page';
+    die;
 });
