@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RegisterationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,4 +28,10 @@ Route::any('/demo/{name?}',function($name = null){
 Route::get('no-access',function(){
     echo 'You are not allowed to access the page';
     die;
+});
+
+Route::post('register',[RegisterationController::class,'register'])->name('register');
+
+Route::get('form',function(){
+    return view('form');            
 });
